@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✨ 기본 폰트 및 컬러 세팅 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f7ff;
+  /* 라벤더 화이트 */
+  color: #1e1b2e;
+  /* 진한 보라 회색 텍스트 */
+  font-family: "Pretendard", "Inter", "sans-serif";
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body h1 span {
+  letter-spacing: 0.05rem;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+/* 💜 스크롤바 스타일 (은은한 라벤더) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(249, 247, 255, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c4b5fd, #a78bfa);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a78bfa, #8b5cf6);
+}
+
+/* 💫 텍스트 선택 강조색 */
+::selection {
+  background: rgba(167, 139, 250, 0.25);
+  color: #1e1b2e;
+}
+
+/* 🌈 섹션 리빌 애니메이션 */
+.js-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.js-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ⚙️ 레이아웃 안정성 */
+main,
+section {
+  position: relative;
+  z-index: 10;
+}
+
+/* 💡 버튼 기본 hover 효과 */
+button {
+  transition: all 0.25s ease;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.4);
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* 🔗 링크 기본 스타일 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7c3aed;
+}
+
+/* 📱 반응형 여백 */
+@media (max-width: 768px) {
+  section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* 💻 코드 블록 (API 등) */
+pre {
+  background: rgba(247, 245, 255, 0.9);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  color: #4b3f72;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+code {
+  color: #6d28d9;
+}
+
+/* 💫 Fade-in 유틸리티 */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌤️ 카드형 섹션 그림자 */
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.1);
+  background: #ffffffcc;
+  backdrop-filter: blur(12px);
+}
+
+/* 📜 이미지 및 비디오 반응형 */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

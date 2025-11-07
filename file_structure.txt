@@ -1,0 +1,298 @@
+OS SSD 볼륨에 대한 폴더 경로의 목록입니다.
+볼륨 일련 번호는 48E7-FC7B입니다.
+C:.
+|   .env
+|   .gitignore
+|   file_structure.txt
+|   middleware.ts
+|   next-env.d.ts
+|   next-seo.config.ts
+|   next.config.js
+|   package-lock.json
+|   package.json
+|   postcss.config.js
+|   README.md
+|   tailwind.config.js
+|   tsconfig.json
+|   
++---.next
+|   |   app-build-manifest.json
+|   |   build-manifest.json
+|   |   fallback-build-manifest.json
+|   |   package.json
+|   |   react-loadable-manifest.json
+|   |   trace
+|   |   
+|   +---cache
+|   |   |   .rscinfo
+|   |   |   
+|   |   +---swc
+|   |   |   \---plugins
+|   |   |       \---v7_windows_x86_64_0.115.1
+|   |   \---webpack
+|   |       +---client-development
+|   |       |       0.pack.gz
+|   |       |       1.pack.gz
+|   |       |       10.pack.gz
+|   |       |       11.pack.gz
+|   |       |       12.pack.gz
+|   |       |       13.pack.gz
+|   |       |       14.pack.gz
+|   |       |       15.pack.gz
+|   |       |       16.pack.gz
+|   |       |       17.pack.gz
+|   |       |       18.pack.gz
+|   |       |       19.pack.gz
+|   |       |       2.pack.gz
+|   |       |       20.pack.gz
+|   |       |       3.pack.gz
+|   |       |       4.pack.gz
+|   |       |       5.pack.gz
+|   |       |       6.pack.gz
+|   |       |       7.pack.gz
+|   |       |       8.pack.gz
+|   |       |       9.pack.gz
+|   |       |       index.pack.gz
+|   |       |       index.pack.gz.old
+|   |       |       
+|   |       +---client-development-fallback
+|   |       |       0.pack.gz
+|   |       |       1.pack.gz
+|   |       |       index.pack.gz.old
+|   |       |       
+|   |       \---server-development
+|   |               0.pack.gz
+|   |               1.pack.gz
+|   |               10.pack.gz
+|   |               11.pack.gz
+|   |               12.pack.gz
+|   |               13.pack.gz
+|   |               14.pack.gz
+|   |               15.pack.gz
+|   |               16.pack.gz
+|   |               17.pack.gz
+|   |               18.pack.gz
+|   |               19.pack.gz
+|   |               2.pack.gz
+|   |               20.pack.gz
+|   |               3.pack.gz
+|   |               4.pack.gz
+|   |               5.pack.gz
+|   |               6.pack.gz
+|   |               7.pack.gz
+|   |               8.pack.gz
+|   |               9.pack.gz
+|   |               index.pack.gz
+|   |               index.pack.gz.old
+|   |               
+|   +---server
+|   |   |   app-paths-manifest.json
+|   |   |   interception-route-rewrite-manifest.js
+|   |   |   middleware-build-manifest.js
+|   |   |   middleware-manifest.json
+|   |   |   middleware-react-loadable-manifest.js
+|   |   |   next-font-manifest.js
+|   |   |   next-font-manifest.json
+|   |   |   pages-manifest.json
+|   |   |   server-reference-manifest.js
+|   |   |   server-reference-manifest.json
+|   |   |   
+|   |   \---app
+|   |       \---_not-found
+|   |               page_client-reference-manifest.js
+|   |               
+|   +---static
+|   |   +---chunks
+|   |   |   |   main-app.js
+|   |   |   |   polyfills.js
+|   |   |   |   webpack.js
+|   |   |   |   
+|   |   |   +---app
+|   |   |   |   \---_not-found
+|   |   |   |           page.js
+|   |   |   |           
+|   |   |   \---fallback
+|   |   |       |   amp.js
+|   |   |       |   main.js
+|   |   |       |   react-refresh.js
+|   |   |       |   webpack.js
+|   |   |       |   
+|   |   |       \---pages
+|   |   |               _app.js
+|   |   |               _error.js
+|   |   |               
+|   |   +---development
+|   |   |       _buildManifest.js
+|   |   |       _ssgManifest.js
+|   |   |       
+|   |   \---webpack
+|   |           633457081244afec._.hot-update.json
+|   |           
+|   \---types
+|           cache-life.d.ts
+|           package.json
+|           
++---app
+|   |   layout.tsx
+|   |   page.tsx
+|   |   
+|   +---admin
+|   |   |   layout.tsx
+|   |   |   
+|   |   +---inquiries
+|   |   |       page.tsx
+|   |   |       
+|   |   +---login
+|   |   |       page.tsx
+|   |   |       route.ts
+|   |   |       
+|   |   \---verify-otp
+|   |           page.tsx
+|   |           route.ts
+|   |           
+|   +---api
+|   |   +---admin
+|   |   |   +---inquiries
+|   |   |   |       route.ts
+|   |   |   |       
+|   |   |   +---login
+|   |   |   |       route.ts
+|   |   |   |       
+|   |   |   +---update-status
+|   |   |   |       route.ts
+|   |   |   |       
+|   |   |   \---verify-otp
+|   |   |           route.ts
+|   |   |           
+|   |   +---contact
+|   |   |   |   route.ts
+|   |   |   |   
+|   |   |   +---list
+|   |   |   |       route.ts
+|   |   |   |       
+|   |   |   \---[id]
+|   |   |           route.ts
+|   |   |           
+|   |   \---slack
+|   |       |   route.ts
+|   |       |   
+|   |       \---actions
+|   |               route.ts
+|   |               
+|   +---b2b
+|   |       page.tsx
+|   |       
+|   +---careers
+|   |       page.tsx
+|   |       
+|   +---company
+|   |       page.tsx
+|   |       
+|   +---device
+|   |       page.tsx
+|   |       
+|   +---distribution
+|   |       page.tsx
+|   |       
+|   +---fb
+|   |       page.tsx
+|   |       
+|   +---inquiry
+|   |   +---contract
+|   |   |       ContractInquiryClient.tsx
+|   |   |       page.tsx
+|   |   |       
+|   |   +---general
+|   |   |       GeneralInquiryClient.tsx
+|   |   |       page.tsx
+|   |   |       
+|   |   +---integration
+|   |   |       IntegrationInquiryClient.tsx
+|   |   |       page.tsx
+|   |   |       
+|   |   +---liquidity
+|   |   |       LiquidityInquiryClient.tsx
+|   |   |       page.tsx
+|   |   |       
+|   |   \---settlement
+|   |           page.tsx
+|   |           SettlementInquiryClient.tsx
+|   |           
+|   +---lottie
+|   |       Dashboard Developer.json
+|   |       Payment Successful Animation.json
+|   |       pos_machine.json
+|   |       
+|   +---online-pay
+|   |       page.tsx
+|   |       
+|   +---payment-faq
+|   |       layout.tsx
+|   |       page.tsx
+|   |       
+|   +---qr-pay
+|   |       page.tsx
+|   |       
+|   +---recruit
+|   |       page.tsx
+|   |       
+|   +---security-policy
+|   |       page.tsx
+|   |       
+|   +---seo
+|   |       generateSEO.ts
+|   |       sepMap.ts
+|   |       types.ts
+|   |       
+|   +---service
+|   |       page.tsx
+|   |       
+|   +---support
+|   |       page.tsx
+|   |       
+|   +---tech-support
+|   |       page.tsx
+|   |       
+|   +---transparency-report
+|   |       page.tsx
+|   |       
+|   \---vision
+|           page.tsx
+|           
++---components
+|       API.tsx
+|       AuroraBackground.tsx
+|       Compliance.tsx
+|       Contact.tsx
+|       ContactForm.tsx
+|       Features.tsx
+|       Footer.tsx
+|       Hero.tsx
+|       Insights.tsx
+|       Liquidity.tsx
+|       Navbar.tsx
+|       Partners.tsx
+|       ScrollToTop.tsx
+|       Security.tsx
+|       SecurityPolicyPDFGenerator.tsx
+|       Settlement.tsx
+|       SettlementComparison.tsx
+|       
++---lib
+|       prisma.ts
+|       
++---prisma
+|   |   schema.prisma
+|   |   
+|   \---migrations
+|       |   migration_lock.toml
+|       |   
+|       \---20251106091517_init
+|               migration.sql
+|               
++---public
+|       README.txt
+|       
+\---styles
+        globals.css
+        
