@@ -47,12 +47,12 @@ const fadeUp = (i = 0) => ({
    ✨ Lottie JSON (민트톤 라인 애니메이션)
    (짧고 가벼운 SVG라인 기반)
 ────────────────────────────────────────────────── */
-import cardAnim from "@/public/lottie/card.json";
-import shieldAnim from "@/public/lottie/shield.json";
-import walletAnim from "@/public/lottie/wallet.json";
-import refundAnim from "@/public/lottie/refund.json";
-import lockAnim from "@/public/lottie/lock.json";
-import globeAnim from "@/public/lottie/globe.json";
+//import cardAnim from "@/public/lottie/card.json";
+//import shieldAnim from "@/public/lottie/shield.json";
+//import walletAnim from "@/public/lottie/wallet.json";
+//import refundAnim from "@/public/lottie/refund.json";
+//import lockAnim from "@/public/lottie/lock.json";
+//import globeAnim from "@/public/lottie/globe.json";
 
 /* ───────────────────────────────────────────────
    ✨ Component
@@ -67,7 +67,7 @@ export default function PaymentFAQ(): JSX.Element {
             a: `결제는 카드사 또는 간편결제사의 실시간 승인을 통해 평균 1~3초 내에 완료됩니다. 승인 결과는 즉시 SFIN PAY 서버로 전달되며, 승인 후에는 취소·환불을 통해서만 변경 가능합니다.
 승인 과정에서 네트워크 지연이 발생할 경우 일시적으로 “승인 중” 상태가 유지될 수 있으나, 이는 자동으로 동기화되어 처리됩니다.`,
             icon: <CreditCard size={18} />,
-            lottie: cardAnim,
+            //lottie: cardAnim,
         },
         {
             id: "fail",
@@ -75,7 +75,7 @@ export default function PaymentFAQ(): JSX.Element {
             a: `가장 흔한 원인은 카드 한도 초과, 인증 실패, 유효기간 만료, 은행 점검 시간대 결제 시도 등입니다. 간편결제(토스·네이버·카카오)는 잔액 부족이나 인증 오류로 실패할 수 있습니다.
 SFIN PAY 관리자 대시보드의 "거래 내역 > 실패 사유" 항목에서 상세 코드를 확인할 수 있으며, API 연동 시 오류 코드를 기반으로 자동 재시도 로직을 구성할 수 있습니다.`,
             icon: <ShieldCheck size={18} />,
-            lottie: shieldAnim,
+            // lottie: shieldAnim,
         },
         {
             id: "settlement",
@@ -83,7 +83,7 @@ SFIN PAY 관리자 대시보드의 "거래 내역 > 실패 사유" 항목에서 
             a: `‘D+0 정산’은 결제 당일 입금, ‘D+1 정산’은 익영업일 입금을 뜻합니다. D+0은 유동성이 필요한 업종(예: 음식·유통)에 제공되며 내부 심사 기준을 통과해야 합니다.
 D+1은 표준으로 적용되며, 주말·공휴일 정산 여부는 계약 시 지정 가능합니다. 모든 정산 내역은 실시간 대시보드에서 확인할 수 있습니다.`,
             icon: <Wallet size={18} />,
-            lottie: walletAnim,
+            //lottie: walletAnim,
         },
         {
             id: "refund",
@@ -91,7 +91,7 @@ D+1은 표준으로 적용되며, 주말·공휴일 정산 여부는 계약 시 
             a: `취소 요청이 접수되면 즉시 카드사·결제사로 취소 명령이 전송됩니다. 승인 후 고객 계좌로의 환불은 결제사 정책에 따라 1~5영업일 내 완료됩니다.
 가맹점은 관리자 페이지에서 ‘부분취소’, ‘전체취소’를 선택할 수 있으며, API 기반 자동 취소 기능도 제공합니다.`,
             icon: <RefreshCcw size={18} />,
-            lottie: refundAnim,
+            //lottie: refundAnim,
         },
         {
             id: "security",
@@ -99,7 +99,7 @@ D+1은 표준으로 적용되며, 주말·공휴일 정산 여부는 계약 시 
             a: `SFIN PAY는 PCI-DSS Level 1 규격을 준수하며, 결제 데이터는 TLS 1.3 통신과 AES-256 알고리즘으로 암호화됩니다.
 민감정보는 분리 보관되고, 접근 제어·로그 감사·키 관리 등 보안 프로세스가 ISMS 기준에 맞게 주기적으로 검증됩니다.`,
             icon: <Lock size={18} />,
-            lottie: lockAnim,
+            //lottie: lockAnim,
         },
         {
             id: "overseas",
@@ -107,7 +107,7 @@ D+1은 표준으로 적용되며, 주말·공휴일 정산 여부는 계약 시 
             a: `Visa, MasterCard, JCB, UnionPay, AMEX 등 주요 국제 네트워크를 지원합니다. 결제 시점의 실시간 환율을 적용하며, 정산은 원화 기준으로 처리됩니다.
 다국어 영수증과 해외 BIN 검증 기능도 제공됩니다.`,
             icon: <Globe2 size={18} />,
-            lottie: globeAnim,
+            //lottie: globeAnim,
         },
     ];
 
