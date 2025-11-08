@@ -14,7 +14,7 @@ import {
 import Link from 'next/link';
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6, delay: 0.08 * i },
@@ -84,7 +84,7 @@ export default function Security(): JSX.Element {
                         {...fadeUp(i + 1)}
                         className="group relative rounded-2xl border border-[rgba(0,200,155,0.25)]
                        bg-white p-6 hover:shadow-[0_10px_30px_rgba(0,200,155,0.15)]
-                       transition-all duration-500"
+                       t1 duration-500"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 rounded-xl bg-[rgba(0,200,155,0.08)] text-[#00b894]">
@@ -156,7 +156,7 @@ export default function Security(): JSX.Element {
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl
                      bg-gradient-to-r from-[#00c89b] to-[#00b894]
                      hover:from-[#00b894] hover:to-[#00a884]
-                     text-white font-semibold transition-all
+                     text-white font-semibold t1
                      shadow-[0_8px_20px_rgba(0,200,155,0.25)]"
                 >
                     보안 정책 전문 보기

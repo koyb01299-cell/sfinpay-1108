@@ -67,9 +67,9 @@ export default function TechSupportProMint(): JSX.Element {
     }, []);
 
     const fadeUp = (i = 0, d = 0.5) => ({
-        initial: { opacity: 0, y: 18 },
+        initial: { opacity: 1, y: 18 },
         whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.22 },
+        viewport: { once: true, amount: 0 },
         transition: { duration: d, delay: 0.06 * i },
     });
 

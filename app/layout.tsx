@@ -3,12 +3,13 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AuroraBackground from "../components/AuroraBackground";
 import ScrollToTop from "../components/ScrollToTop";
+import Chatbot from "@/components/Chatbot";
 
 /* ✅ Next.js 15 공식 metadata 기반 SEO 설정 */
 export const metadata = {
   title: {
     default: "SFIN PAY",
-    template: "%s | SFIN PAY",
+    template: "SFIN PAY | %s",
   },
   description:
     "SFIN PAY — 빠르고 안전한 결제·정산 인프라. D+0/D+1 정산, 유동성, 보안, 컴플라이언스.",
@@ -132,6 +133,8 @@ export default function RootLayout({
 
         {/* 📄 페이지 콘텐츠 */}
         <main className="relative z-10">{children}</main>
+
+        <Chatbot />
 
         {/* ⚓ 전역 푸터 */}
         <Footer />

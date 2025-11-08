@@ -17,7 +17,7 @@ import hospitalAnim from '@/public/lottie/industry_hospital.json';
 import personalAnim from '@/public/lottie/industry_personal.json';
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 25 },
+    initial: { opacity: 1, y: 25 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.55, delay: 0.07 * i },
@@ -140,7 +140,7 @@ export default function Features2(): JSX.Element {
                             onClick={() => goTo(c.href)}
                             className={`relative rounded-2xl border border-[rgba(0,200,155,0.25)]
                             bg-white/95 backdrop-blur-sm p-5 flex flex-col justify-between
-                            cursor-pointer group transition-all duration-300
+                            cursor-pointer group t1 duration-300
                             shadow-[0_4px_14px_rgba(0,200,155,0.05)]
                             ${isActive
                                     ? 'hover:bg-[#f3fffc] hover:shadow-[0_10px_28px_rgba(0,200,155,0.12)] hover:-translate-y-0.5'

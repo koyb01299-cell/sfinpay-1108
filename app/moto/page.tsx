@@ -23,9 +23,9 @@ export default function ManualPay(): JSX.Element {
     }, []);
 
     const fadeUp = (i = 0) => ({
-        initial: { opacity: 0, y: 30 },
+        initial: { opacity: 1, y: 30 },
         whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.3 },
+        viewport: { once: true, amount: 0 },
         transition: { duration: 0.6, delay: i * 0.1 },
     });
 
@@ -143,7 +143,7 @@ export default function ManualPay(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i * 0.1)}
-                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] t1"
                         >
                             <div className="flex items-center gap-3 text-[#10b981] mb-4">
                                 {f.icon}
@@ -174,7 +174,7 @@ export default function ManualPay(): JSX.Element {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all"
+                        className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] t1"
                     >
                         도입 상담 받기 →
                     </motion.button>

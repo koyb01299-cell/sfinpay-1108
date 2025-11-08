@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6, delay: 0.08 * i },
@@ -159,7 +159,7 @@ export default function Liquidity(): JSX.Element {
                     {...fadeUp(3)}
                     className="rounded-2xl border border-[rgba(0,200,155,0.25)]
                      bg-white p-8 hover:shadow-[0_10px_30px_rgba(0,200,155,0.15)]
-                     transition-all duration-500"
+                     t1 duration-500"
                 >
                     <div className="flex items-center gap-3 mb-5 text-[#00b894]">
                         <TrendingUp size={22} />
@@ -182,7 +182,7 @@ export default function Liquidity(): JSX.Element {
                        bg-gradient-to-r from-[#00c89b] to-[#00b894]
                        hover:from-[#00b894] hover:to-[#00a884]
                        text-white font-semibold shadow-[0_8px_20px_rgba(0,200,155,0.25)]
-                       transition-all"
+                       t1"
                     >
                         한도 확인
                     </a>
@@ -193,7 +193,7 @@ export default function Liquidity(): JSX.Element {
                     {...fadeUp(4)}
                     className="rounded-2xl border border-[rgba(0,200,155,0.25)]
                      bg-white p-8 hover:shadow-[0_10px_30px_rgba(0,200,155,0.15)]
-                     transition-all duration-500"
+                     t1 duration-500"
                 >
                     <div className="flex items-center gap-3 mb-5 text-[#00b894]">
                         <RefreshCcw size={22} />
@@ -216,7 +216,7 @@ export default function Liquidity(): JSX.Element {
                        bg-gradient-to-r from-[#00c89b] to-[#00b894]
                        hover:from-[#00b894] hover:to-[#00a884]
                        text-white font-semibold shadow-[0_8px_20px_rgba(0,200,155,0.25)]
-                       transition-all"
+                       t1"
                     >
                         상담 신청
                     </a>

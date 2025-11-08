@@ -177,7 +177,7 @@ const ContactFormCRM: React.FC<ContactFormCRMProps> = ({ defaultType = '' }) => 
                     whileTap={{ scale: 0.97 }}
                     disabled={sending}
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all disabled:opacity-60"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_25px_rgba(16,185,129,0.25)] t1 disabled:opacity-60"
                 >
                     {sending ? (
                         '전송 중...'

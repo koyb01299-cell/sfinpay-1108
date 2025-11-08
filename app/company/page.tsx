@@ -16,7 +16,7 @@ import {
 const fadeUp = (i = 0) => ({
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0 },
     transition: { duration: 0.6, delay: 0.08 * i },
 });
 
@@ -103,7 +103,7 @@ export default function CompanyIntro(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i)}
-                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.12)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.12)] t1"
                         >
                             <div className="flex flex-col items-center gap-4">
                                 <div className="p-3 rounded-full bg-[#10b981]/10 text-[#10b981]">{v.icon}</div>
@@ -125,7 +125,7 @@ export default function CompanyIntro(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i)}
-                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl shadow-sm hover:shadow-[0_6px_25px_rgba(16,185,129,0.08)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl shadow-sm hover:shadow-[0_6px_25px_rgba(16,185,129,0.08)] t1"
                         >
                             <div className="flex items-center gap-3 mb-3 text-[#10b981] font-semibold">
                                 <Briefcase size={20} />
@@ -154,7 +154,7 @@ export default function CompanyIntro(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i * 0.1)}
-                            className="px-6 py-3 bg-white border border-[#a7f3d0]/70 rounded-full text-sm font-medium text-[#1e3a34]/90 hover:text-[#10b981] hover:shadow-md transition-all"
+                            className="px-6 py-3 bg-white border border-[#a7f3d0]/70 rounded-full text-sm font-medium text-[#1e3a34]/90 hover:text-[#10b981] hover:shadow-md t1"
                         >
                             {c}
                         </motion.div>
@@ -164,7 +164,7 @@ export default function CompanyIntro(): JSX.Element {
                 <motion.div {...fadeUp(0.4)}>
                     <Link
                         href="/careers"
-                        className="inline-flex items-center justify-center px-10 py-5 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all"
+                        className="inline-flex items-center justify-center px-10 py-5 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] t1"
                     >
                         채용 및 파트너 문의 →
                     </Link>

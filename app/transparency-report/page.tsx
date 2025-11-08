@@ -35,7 +35,7 @@ export default function Page(): JSX.Element {
      * Framer Motion: 공통 페이드 업 애니메이션
      */
     const fadeUp = (i = 0) => ({
-        initial: { opacity: 0, y: 30 },
+        initial: { opacity: 1, y: 30 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true },
         transition: { duration: 0.6, delay: 0.08 * i },

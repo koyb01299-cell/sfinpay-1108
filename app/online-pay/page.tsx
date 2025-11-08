@@ -23,10 +23,10 @@ export default function OnlinePay(): JSX.Element {
     }, []);
 
     const fadeUp = (delay = 0) => ({
-        initial: { opacity: 0, y: 25 },
+        initial: { opacity: 1, y: 25 },
         whileInView: { opacity: 1, y: 0 },
         transition: { duration: 0.6, delay },
-        viewport: { once: true, amount: 0.25 },
+        viewport: { once: true, amount: 0 },
     });
 
     return (
@@ -90,9 +90,9 @@ export default function OnlinePay(): JSX.Element {
                         <button
                             key={t}
                             onClick={() => setActiveTab(t)}
-                            className={`px-8 py-3 rounded-full text-lg font-medium transition-all ${activeTab === t
-                                    ? "bg-[#10b981] text-white shadow-md"
-                                    : "bg-white border border-[#a7f3d0]/70 text-[#1e3a34] hover:text-[#059669]"
+                            className={`px-8 py-3 rounded-full text-lg font-medium t1 ${activeTab === t
+                                ? "bg-[#10b981] text-white shadow-md"
+                                : "bg-white border border-[#a7f3d0]/70 text-[#1e3a34] hover:text-[#059669]"
                                 }`}
                         >
                             {t === "auto" ? "자동결제" : "수기결제"}
@@ -194,7 +194,7 @@ export default function OnlinePay(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i * 0.1)}
-                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] t1"
                         >
                             <div className="flex items-center gap-3 text-[#10b981] mb-4">
                                 {f.icon}
@@ -234,7 +234,7 @@ export default function OnlinePay(): JSX.Element {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md transition-all"
+                        className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md t1"
                     >
                         도입 상담 받기 →
                     </motion.button>

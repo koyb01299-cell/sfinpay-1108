@@ -14,7 +14,7 @@ import {
    🧩 애니메이션 프리셋 (Framer Motion 11 대응)
 ────────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
 });
 
@@ -178,7 +178,7 @@ export default function Contact(): JSX.Element {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_25px_rgba(16,185,129,0.25)] t1"
                 >
                     <Send size={18} /> 문의 보내기
                 </motion.button>
@@ -197,7 +197,7 @@ export default function Contact(): JSX.Element {
             >
                 <a
                     href="mailto:contact@sfinpay.co.kr"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_6px_20px_rgba(16,185,129,0.25)] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_6px_20px_rgba(16,185,129,0.25)] t1"
                 >
                     <Mail size={18} /> 이메일 문의
                 </a>
@@ -206,7 +206,7 @@ export default function Contact(): JSX.Element {
                     href="https://pf.kakao.com/_your_kakao_channel_id"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald-200 bg-white/80 hover:bg-[#f0fdfa] text-emerald-700 font-semibold shadow-[0_6px_15px_rgba(16,185,129,0.08)] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald-200 bg-white/80 hover:bg-[#f0fdfa] text-emerald-700 font-semibold shadow-[0_6px_15px_rgba(16,185,129,0.08)] t1"
                 >
                     <MessageCircle size={18} /> 카카오톡 상담
                 </a>

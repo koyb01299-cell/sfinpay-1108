@@ -36,7 +36,7 @@ type APISectionProps = {
    애니메이션 프리셋 (Framer Motion 11 호환)
 ────────────────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
 });
 
@@ -79,7 +79,7 @@ const StepCard = memo(function StepCard({
             tabIndex={0}
             role="article"
             aria-label={`${index + 1}단계: ${step.title}`}
-            className="group text-center rounded-2xl border border-brand-mint/40 bg-white/90 p-8 shadow-[0_8px_25px_rgba(16,185,129,0.08)] hover:shadow-[0_12px_35px_rgba(16,185,129,0.13)] transition-all outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
+            className="group text-center rounded-2xl border border-brand-mint/40 bg-white/90 p-8 shadow-[0_8px_25px_rgba(16,185,129,0.08)] hover:shadow-[0_12px_35px_rgba(16,185,129,0.13)] t1 outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
         >
             <div className="flex justify-center mb-4 text-brand-mintDark">
                 {step.icon({ size: 28 })}
@@ -179,7 +179,7 @@ export default function API({
                     <a
                         href={ctaHref}
                         onClick={onCtaClick}
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] t1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
                     >
                         {ctaLabel}
                     </a>
@@ -187,7 +187,7 @@ export default function API({
                     <Link
                         href={ctaHref}
                         onClick={onCtaClick}
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-brand-mintDark to-emerald-400 hover:from-emerald-500 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] t1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-mint/40"
                     >
                         {ctaLabel}
                     </Link>

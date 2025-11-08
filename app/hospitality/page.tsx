@@ -14,9 +14,9 @@ import {
 } from 'lucide-react';
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 1, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0 },
     transition: { duration: 0.6, delay: i * 0.1 },
 });
 
@@ -93,7 +93,7 @@ export default function Travel(): JSX.Element {
                         { icon: <Building2 size={28} />, title: '객실/지점 통합 정산', desc: '호텔/리조트 지점별 매출 자동 정리' },
                         { icon: <Wallet size={28} />, title: 'D+0 빠른 입금', desc: '숙박업 특화 당일 입금 지원' },
                     ].map((f, i) => (
-                        <motion.div key={i} {...fadeUp(i * 0.15)} className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all">
+                        <motion.div key={i} {...fadeUp(i * 0.15)} className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] t1">
                             <div className="flex items-center gap-3 text-[#10b981] mb-4">{f.icon}<h3 className="text-xl font-semibold text-[#0b2723]">{f.title}</h3></div>
                             <p className="text-[#1e3a34]/80 leading-relaxed">{f.desc}</p>
                         </motion.div>
@@ -113,7 +113,7 @@ export default function Travel(): JSX.Element {
                     예약금, 취소, 부분환불까지 — 자동 정산으로 손쉬운 운영이 가능합니다.
                 </motion.p>
                 <Link href="/inquiry/contract">
-                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md transition-all">
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md t1">
                         도입 상담 받기 →
                     </motion.button>
                 </Link>

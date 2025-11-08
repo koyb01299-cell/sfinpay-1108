@@ -18,7 +18,7 @@ import { ShieldCheck, TrendingUp, Activity } from 'lucide-react';
    애니메이션 프리셋
 ────────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6, delay: 0.08 * i },

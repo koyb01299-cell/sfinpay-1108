@@ -9,7 +9,7 @@ import { Target, Lightbulb, HeartHandshake, Rocket, Globe2, Users } from "lucide
 };*/
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 25 },
+    initial: { opacity: 1, y: 25 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.6, delay: 0.08 * i },
@@ -79,7 +79,7 @@ export default function VisionPage(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i + 1)}
-                            className="p-8 rounded-2xl border border-brand-mintLight bg-[#F9FFFE] hover:shadow-[0_8px_25px_rgba(0,201,167,0.15)] transition-all duration-500"
+                            className="p-8 rounded-2xl border border-brand-mintLight bg-[#F9FFFE] hover:shadow-[0_8px_25px_rgba(0,201,167,0.15)] t1 duration-500"
                         >
                             <div className="flex flex-col items-center text-center gap-4">
                                 <div className="p-4 rounded-full bg-brand-mint/20 text-brand-mintDark">
@@ -137,7 +137,7 @@ export default function VisionPage(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i + 1)}
-                            className="p-8 rounded-2xl border border-brand-mintDark/20 bg-white hover:shadow-[0_8px_25px_rgba(0,201,167,0.15)] transition-all duration-500"
+                            className="p-8 rounded-2xl border border-brand-mintDark/20 bg-white hover:shadow-[0_8px_25px_rgba(0,201,167,0.15)] t1 duration-500"
                         >
                             <div className="flex flex-col items-center text-center gap-4">
                                 <div className="p-4 rounded-full bg-brand-mintDark/15 text-brand-mintDark">

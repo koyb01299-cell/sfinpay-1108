@@ -17,9 +17,9 @@ import {
    🌿 Animation Preset
 ────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 1, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0 },
     transition: { duration: 0.6, delay: i * 0.1 },
 });
 
@@ -157,7 +157,7 @@ const Distribution: React.FC = () => {
                         <motion.div
                             key={i}
                             {...fadeUp(i * 0.15)}
-                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/60 rounded-2xl hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] t1"
                         >
                             <div className="flex items-center gap-3 text-[#10b981] mb-4">
                                 {f.icon}
@@ -195,7 +195,7 @@ const Distribution: React.FC = () => {
                         {...fadeUp(0.4)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md transition-all"
+                        className="px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold text-lg shadow-md t1"
                     >
                         도입 상담 받기 →
                     </motion.button>

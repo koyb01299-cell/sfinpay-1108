@@ -17,9 +17,9 @@ export default function Recruit(): JSX.Element {
     });
 
     const fadeUp = (i = 0) => ({
-        initial: { opacity: 0, y: 25 },
+        initial: { opacity: 1, y: 25 },
         whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.3 },
+        viewport: { once: true, amount: 0 },
         transition: { duration: 0.6, delay: i * 0.1 },
     });
 
@@ -73,7 +73,7 @@ export default function Recruit(): JSX.Element {
                 <div className="inline-flex bg-[#ffffff] border border-[#a7f3d0]/60 rounded-full p-1 shadow-sm">
                     <button
                         onClick={() => setTab("job")}
-                        className={`w-36 md:w-44 px-6 py-3 rounded-full font-semibold transition-all ${tab === "job"
+                        className={`w-36 md:w-44 px-6 py-3 rounded-full font-semibold t1 ${tab === "job"
                             ? "bg-gradient-to-r from-[#34d399] to-[#10b981] text-white shadow-md"
                             : "bg-transparent text-[#1e3a34]/80 hover:bg-[#d1fae5]/60 hover:text-[#059669]"
                             }`}
@@ -82,7 +82,7 @@ export default function Recruit(): JSX.Element {
                     </button>
                     <button
                         onClick={() => setTab("partner")}
-                        className={`w-36 md:w-44 px-6 py-3 rounded-full font-semibold transition-all ${tab === "partner"
+                        className={`w-36 md:w-44 px-6 py-3 rounded-full font-semibold t1 ${tab === "partner"
                             ? "bg-gradient-to-r from-[#34d399] to-[#10b981] text-white shadow-md"
                             : "bg-transparent text-[#1e3a34]/80 hover:bg-[#d1fae5]/60 hover:text-[#059669]"
                             }`}

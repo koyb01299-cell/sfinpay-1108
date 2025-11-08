@@ -17,6 +17,10 @@ import {
     Server,
     Users,
     Wrench,
+    ShoppingBag,
+    Hospital,
+    Building,
+    FileUser
 } from 'lucide-react';
 
 interface SubMenuItem {
@@ -79,7 +83,7 @@ export default function Navbar(): JSX.Element {
                 {
                     label: '수기 결제(MOTO)',
                     desc: '전화·원격 주문용 안전한 결제 방식',
-                    link: '/payments/moto',
+                    link: '/moto',
                     icon: <ShieldCheck size={18} />,
                 },
                 {
@@ -95,40 +99,52 @@ export default function Navbar(): JSX.Element {
             categoryDesc: '비즈니스 구조에 맞춘 결제 솔루션',
             submenu: [
                 {
-                    label: '온라인 쇼핑몰·판매업',
+                    label: '쇼핑·판매·유통업',
                     desc: 'D+0 정산, 정기결제, 간편결제',
                     link: '/distribution',
-                    icon: <Building2 size={18} />,
+                    icon: <ShoppingBag size={18} />,
                 },
                 {
-                    label: '학원·피트니스·렌탈·미용',
-                    desc: '예약결제·자동청구·스케줄정산',
+                    label: '서비스·교육업',
+                    desc: '자동청구, 예약결제, 스케줄정산',
                     link: '/service',
                     icon: <Users size={18} />,
                 },
                 {
-                    label: '식당·카페·프랜차이즈',
-                    desc: 'POS 연동, 본사-매장 정산, 실시간 매출',
+                    label: '외식·프랜차이즈업',
+                    desc: 'POS연동, 매출리포트, 본사정산',
                     link: '/fb',
-                    icon: <MonitorSmartphone size={18} />,
+                    icon: <Building2 size={18} />,
                 },
                 {
-                    label: '숙박·여행·레저',
-                    desc: '예약금, 부분환불, 자동처리 시스템',
-                    link: '/industries/hospitality',
+                    label: '숙박·여행·레저업',
+                    desc: '부분환불, 예약금관리, 자동처리',
+                    link: '/hospitality',
                     icon: <ShieldCheck size={18} />,
                 },
                 {
-                    label: '공연·게임·콘텐츠',
-                    desc: '정기구독, 환율자동처리, 저작권정산',
-                    link: '/industries/entertainment',
+                    label: '콘텐츠·엔터테인먼트',
+                    desc: '정기구독, 글로벌결제, 저작권정산',
+                    link: '/entertainment',
                     icon: <Server size={18} />,
                 },
                 {
+                    label: '병원·의료·헬스케어',
+                    desc: '정기구독, 환율자동처리, 저작권정산',
+                    link: '/healthcare',
+                    icon: <Hospital size={18} />,
+                },
+                {
                     label: '기업·광고·임대 서비스',
-                    desc: '세금계산서, 대량정산, B2B API',
+                    desc: '세금계산서, 대량정산, B2B결제',
                     link: '/b2b',
-                    icon: <Building2 size={18} />,
+                    icon: <Building size={18} />,
+                },
+                {
+                    label: '개인·프리랜서',
+                    desc: '결제링크, 비사업자결제, 1인창작자',
+                    link: '/personal',
+                    icon: <FileUser size={18} />,
                 },
             ],
         },
@@ -201,7 +217,7 @@ export default function Navbar(): JSX.Element {
                 initial={{ y: 0 }}
                 animate={{ y: showNav ? 0 : -100 }}
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+                className={`fixed top-0 left-0 w-full z-50 t1 duration-300 ${scrolled
                     ? 'bg-white/85 backdrop-blur-lg shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
                     : 'bg-transparent'
                     }`}
@@ -257,7 +273,7 @@ export default function Navbar(): JSX.Element {
                                                         <Link
                                                             key={i}
                                                             href={sub.link}
-                                                            className="flex items-start gap-3 rounded-lg p-3 hover:bg-[#f6fffb] transition-all"
+                                                            className="flex items-start gap-3 rounded-lg p-3 hover:bg-[#f6fffb] t1"
                                                         >
                                                             <div className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg bg-[#00b894]/10 text-[#00b894]">
                                                                 {sub.icon}
@@ -299,13 +315,13 @@ export default function Navbar(): JSX.Element {
                         <div className="flex items-center gap-3 ml-4">
                             <Link
                                 href="/inquiry/merchant"
-                                className="px-4 py-2 text-sm font-semibold rounded-lg border border-[#00b894] text-[#00b894] hover:bg-[#00b894] hover:text-white transition-all"
+                                className="px-4 py-2 text-sm font-semibold rounded-lg border border-[#00b894] text-[#00b894] hover:bg-[#00b894] hover:text-white t1"
                             >
                                 가맹 문의
                             </Link>
                             <Link
                                 href="/login"
-                                className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#00b894] text-white hover:bg-[#00a884] transition-all"
+                                className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#00b894] text-white hover:bg-[#00a884] t1"
                             >
                                 파트너 로그인
                             </Link>
@@ -415,14 +431,14 @@ export default function Navbar(): JSX.Element {
                             <Link
                                 href="/inquiry/merchant"
                                 onClick={() => setMenuOpen(false)}
-                                className="w-full text-center py-3 rounded-lg border border-[#00b894] text-[#00b894] font-semibold hover:bg-[#00b894] hover:text-white transition-all"
+                                className="w-full text-center py-3 rounded-lg border border-[#00b894] text-[#00b894] font-semibold hover:bg-[#00b894] hover:text-white t1"
                             >
                                 가맹 문의
                             </Link>
                             <Link
                                 href="/login"
                                 onClick={() => setMenuOpen(false)}
-                                className="w-full text-center py-3 rounded-lg bg-[#00b894] text-white font-semibold hover:bg-[#00a884] transition-all"
+                                className="w-full text-center py-3 rounded-lg bg-[#00b894] text-white font-semibold hover:bg-[#00a884] t1"
                             >
                                 파트너 로그인
                             </Link>

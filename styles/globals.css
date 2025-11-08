@@ -62,19 +62,6 @@ body h1 span {
   color: #1e1b2e;
 }
 
-/* 🌈 섹션 리빌 애니메이션 */
-.js-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  will-change: opacity, transform;
-}
-
-.js-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ⚙️ 레이아웃 안정성 */
 main,
 section {
@@ -108,9 +95,15 @@ a:hover {
 
 /* 📱 반응형 여백 */
 @media (max-width: 768px) {
-  section {
+  /*section {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }*/
+}
+
+@media (min-width: 768px) {
+  .main_section {
+    height: 100vh;
   }
 }
 
@@ -128,23 +121,6 @@ pre {
 
 code {
   color: #6d28d9;
-}
-
-/* 💫 Fade-in 유틸리티 */
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* 🌤️ 카드형 섹션 그림자 */

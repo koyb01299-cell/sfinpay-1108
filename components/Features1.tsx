@@ -31,7 +31,7 @@ function LottieLoader({ src, className }: { src: string; className?: string }) {
 }
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6, delay: 0.08 * i },
@@ -120,7 +120,7 @@ export default function Features1(): JSX.Element {
                             onClick={() => goTo(b.href)}
                             className={`rounded-2xl border border-[rgba(0,200,155,0.22)]
                                 bg-white/95 backdrop-blur-sm p-7 flex flex-col md:flex-row items-center gap-6
-                                cursor-pointer group transition-all shadow-[0_4px_16px_rgba(0,200,155,0.06)]
+                                cursor-pointer group t1 shadow-[0_4px_16px_rgba(0,200,155,0.06)]
                                 ${isActive
                                     ? 'hover:bg-[#f3fffc] hover:shadow-[0_10px_28px_rgba(0,200,155,0.15)] hover:-translate-y-0.5'
                                     : 'opacity-60 pointer-events-none'}`}

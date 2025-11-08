@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Building2, Handshake } from 'lucide-react';
 
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6, delay: 0.08 * i },
@@ -112,7 +112,7 @@ export default function Partners(): JSX.Element {
                             key={`r1-${i}`}
                             className="inline-flex flex-col items-center justify-center min-w-[150px] md:min-w-[180px] h-[100px]
                          rounded-xl bg-white border border-[rgba(0,200,155,0.2)]
-                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] transition-all"
+                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] t1"
                         >
                             <img
                                 src={p.logo}
@@ -138,7 +138,7 @@ export default function Partners(): JSX.Element {
                             key={`r2-${i}`}
                             className="inline-flex flex-col items-center justify-center min-w-[150px] md:min-w-[180px] h-[100px]
                          rounded-xl bg-white border border-[rgba(0,200,155,0.2)]
-                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] transition-all"
+                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] t1"
                         >
                             <img
                                 src={p.logo}
@@ -164,7 +164,7 @@ export default function Partners(): JSX.Element {
                             key={`r3-${i}`}
                             className="inline-flex flex-col items-center justify-center min-w-[150px] md:min-w-[180px] h-[100px]
                          rounded-xl bg-white border border-[rgba(0,200,155,0.2)]
-                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] transition-all"
+                         hover:shadow-[0_4px_16px_rgba(0,200,155,0.1)] t1"
                         >
                             <img
                                 src={p.logo}
@@ -202,7 +202,7 @@ export default function Partners(): JSX.Element {
                      bg-gradient-to-r from-[#00c89b] to-[#00b894]
                      hover:from-[#00b894] hover:to-[#00a884]
                      text-white font-semibold shadow-[0_8px_20px_rgba(0,200,155,0.25)]
-                     transition-all"
+                     t1"
                 >
                     제휴 문의하기 →
                 </a>

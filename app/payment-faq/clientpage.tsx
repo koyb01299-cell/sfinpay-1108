@@ -17,9 +17,9 @@ import {
    ✨ Animation Preset
 ────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 25 },
+    initial: { opacity: 1, y: 25 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.25 },
+    viewport: { once: true, amount: 0 },
     transition: { duration: 0.6, delay: i * 0.08 },
 });
 
@@ -144,7 +144,7 @@ export default function PaymentFAQ(): JSX.Element {
                 </p>
                 <a
                     href="/inquiry/integration"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-semibold t1"
                 >
                     기술 지원 문의하기 <ChevronRight size={18} />
                 </a>

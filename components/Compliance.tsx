@@ -18,7 +18,7 @@ import {
    ✨ Animation Preset (Framer Motion v11 호환)
 ────────────────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 1, y: 20 },
     whileInView: { opacity: 1, y: 0 },
 });
 
@@ -105,7 +105,7 @@ export default function Compliance(): JSX.Element {
                         {...fadeUp(i + 1)}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.6, delay: 0.08 * i }}
-                        className="group relative rounded-2xl border border-emerald-200/60 bg-white/90 p-7 hover:shadow-[0_10px_30px_rgba(16,185,129,0.12)] hover:border-emerald-300 transition-all duration-500"
+                        className="group relative rounded-2xl border border-emerald-200/60 bg-white/90 p-7 hover:shadow-[0_10px_30px_rgba(16,185,129,0.12)] hover:border-emerald-300 t1 duration-500"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 rounded-xl bg-emerald-100 text-emerald-600">
@@ -168,7 +168,7 @@ export default function Compliance(): JSX.Element {
                 </p>
                 <Link
                     href="/transparency-report"
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] transition-all"
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-400 text-white font-semibold shadow-[0_8px_20px_rgba(16,185,129,0.25)] t1"
                 >
                     투명경영 보고서 보기
                 </Link>

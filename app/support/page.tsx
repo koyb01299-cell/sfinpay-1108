@@ -17,7 +17,7 @@ export default function Support(): JSX.Element {
     useEffect(() => window.scrollTo(0, 0), []);
 
     const fadeUp = (d = 0) => ({
-        initial: { opacity: 0, y: 30 },
+        initial: { opacity: 1, y: 30 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true },
         transition: { duration: 0.6, delay: d },
@@ -172,7 +172,7 @@ export default function Support(): JSX.Element {
                         <motion.div
                             key={i}
                             {...fadeUp(i * 0.1)}
-                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl text-center hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all"
+                            className="p-8 bg-white border border-[#a7f3d0]/70 rounded-2xl text-center hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] t1"
                         >
                             <div className="flex justify-center mb-4 text-[#10b981]">
                                 {item.icon}
@@ -229,7 +229,7 @@ export default function Support(): JSX.Element {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => router.push("/inquiry/general")}
-                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all"
+                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#34d399] to-[#10b981] hover:from-[#10b981] hover:to-[#059669] text-white font-semibold text-lg shadow-[0_8px_25px_rgba(16,185,129,0.25)] t1"
                 >
                     상담 요청하기 →
                 </motion.button>

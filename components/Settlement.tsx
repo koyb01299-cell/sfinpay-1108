@@ -103,7 +103,7 @@ export default function Settlement(): JSX.Element {
 
             {/* 헤더 */}
             <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 1, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
@@ -125,18 +125,18 @@ export default function Settlement(): JSX.Element {
                 {stages.map((s, i) => (
                     <motion.div
                         key={i}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.2 }}
-                        className={`relative flex-1 p-6 rounded-2xl border transition-all duration-500 backdrop-blur-sm ${i === step
+                        className={`relative flex-1 p-6 rounded-2xl border t1 duration-500 backdrop-blur-sm ${i === step
                             ? 'border-[#00c8b4]/50 bg-white shadow-[0_8px_30px_rgba(0,200,155,0.18)]'
                             : 'border-[#C4F7EC] bg-[#F8FFFD]'
                             }`}
                     >
                         {i === step && (
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 1, scale: 0.95 }}
                                 animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.05, 1] }}
                                 transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                                 className="absolute inset-0 -z-10 rounded-2xl bg-[#00c8b4]/30 blur-2xl"
@@ -161,7 +161,7 @@ export default function Settlement(): JSX.Element {
 
                         {i === step && (
                             <motion.div
-                                initial={{ opacity: 0 }}
+                                initial={{ opacity: 1 }}
                                 animate={{ opacity: 1 }}
                                 className="mt-4 text-xs text-[#00c8b4] font-semibold tracking-wide"
                             >
@@ -182,7 +182,7 @@ export default function Settlement(): JSX.Element {
             <div className="mt-16 text-center">
                 <motion.div
                     key={amount}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 1, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-[#00c8b4] via-[#00d0aa] to-[#00a884] bg-clip-text text-transparent drop-shadow-sm"
@@ -196,7 +196,7 @@ export default function Settlement(): JSX.Element {
 
             {/* CTA */}
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
@@ -209,7 +209,7 @@ export default function Settlement(): JSX.Element {
                 </p>
                 <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00c8b4] to-[#00d0aa] hover:from-[#00a884] hover:to-[#00b894] text-white font-semibold shadow-[0_8px_20px_rgba(0,184,148,0.25)] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00c8b4] to-[#00d0aa] hover:from-[#00a884] hover:to-[#00b894] text-white font-semibold shadow-[0_8px_20px_rgba(0,184,148,0.25)] t1"
                 >
                     빠른 정산 문의하기 <ArrowRight size={16} />
                 </a>

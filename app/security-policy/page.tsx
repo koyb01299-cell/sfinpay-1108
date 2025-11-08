@@ -8,7 +8,7 @@ export default function SecurityPolicy() {
     return (
         <motion.main
             id="security-policy-content"
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
             className="min-h-screen bg-[#ecfdf5] text-[#0b2723] px-6 md:px-16 py-28"

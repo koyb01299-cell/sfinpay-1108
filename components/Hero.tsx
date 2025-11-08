@@ -98,48 +98,15 @@ export default function Hero(): JSX.Element {
         if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    const findBestMatch = (text: string): string => {
-        const lower = text.toLowerCase();
-        for (const faq of FAQ_LIST) {
-            if (faq.keywords.some((k) => lower.includes(k.toLowerCase()))) {
-                return faq.answer;
-            }
-        }
-        return (
-            "아직 이 주제에 대한 자동응답은 준비 중이에요 😊\n" +
-            "하지만 걱정 마세요.\n" +
-            "가맹팀이 신속히 안내드릴 수 있도록 도와드릴게요.\n" +
-            "👉 [가맹 문의 바로가기](/inquiry/contract)\n" +
-            "또는 contact@sfinpay.co.kr 로 문의해 주세요."
-        );
-    };
-
-    const handleSend = () => {
-        if (!input.trim()) return;
-        const userMsg = { from: "user", text: input };
-        setMessages((prev) => [...prev, userMsg]);
-        const reply = findBestMatch(input);
-        setInput("");
-        setTimeout(() => {
-            setMessages((prev) => [...prev, { from: "bot", text: reply }]);
-            const el = document.getElementById("chat-scroll-container");
-            if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
-        }, 600);
-    };
-
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") handleSend();
-    };
-
     return (
         <>
             {/* ──────────────────────────────── HERO ──────────────────────────────── */}
-            <motion.section
+            <section
                 ref={ref}
-                className="relative flex flex-col lg:flex-row items-center justify-between
+                className="main_section relative flex flex-col lg:flex-row items-center justify-between
           min-h-[90vh] overflow-hidden bg-gradient-to-br
           from-[#CFFBF6] via-[#A3FFE8] to-white"
-                style={{ opacity, y }}
+                style={{}}
             >
                 <div
                     className="absolute inset-0 -z-[5]
@@ -150,9 +117,9 @@ export default function Hero(): JSX.Element {
                 {/* 좌측 텍스트 */}
                 <div className="z-10 w-full lg:w-1/2 px-10 md:px-16 lg:px-24 py-24 lg:py-0 text-center lg:text-left">
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7 }}
+                        transition={{ duration: 0.5 }}
                         className="text-5xl md:text-6xl font-extrabold leading-tight text-[#0b3c34]"
                     >
                         <span className="block mb-3 text-[#00d8b8] text-lg md:text-xl font-semibold">
@@ -164,9 +131,9 @@ export default function Hero(): JSX.Element {
                     </motion.h1>
 
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.7 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
                         className="mt-6 text-lg text-[#045a4d]/90 leading-relaxed max-w-md mx-auto lg:mx-0"
                     >
                         SFIN PAY는 <strong>보안·안정성·확장성</strong>을 기반으로
@@ -209,121 +176,8 @@ export default function Hero(): JSX.Element {
                         { }
                     </div>
                 </div>
-            </motion.section>
+            </section>
 
-            {/* ──────────────────────────────── CHATBOT ──────────────────────────────── */}
-            <div className="fixed bottom-6 right-6 z-[9999]">
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsChatOpen((prev) => !prev)}
-                    className="w-16 h-16 rounded-full bg-gradient-to-br from-[#36ffc6] to-[#76ffe0]
-      flex items-center justify-center shadow-lg text-white hover:shadow-xl transition-all"
-                    aria-label="SFIN PAY 상담 열기"
-                >
-                    {isChatOpen ? <X size={28} /> : <MessageSquare size={30} />}
-                </motion.button>
-
-                <AnimatePresence>
-                    {isChatOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 40 }}
-                            transition={{ duration: 0.25 }}
-                            className="fixed bottom-28 right-6 w-[420px] max-h-[620px]
-          flex flex-col rounded-2xl bg-white border border-[#a6f2df]
-          shadow-[0_8px_40px_rgba(0,0,0,0.12)] overflow-hidden"
-                        >
-                            <div className="bg-gradient-to-r from-[#36ffc6] to-[#76ffe0]
-          text-white px-5 py-3 flex items-center justify-between text-base font-semibold">
-                                <span>💬 SFIN PAY 자동상담</span>
-                                <button
-                                    onClick={() => setIsChatOpen(false)}
-                                    className="hover:opacity-80 transition"
-                                    aria-label="닫기"
-                                >
-                                    <X size={20} />
-                                </button>
-                            </div>
-
-                            <div
-                                className="flex-1 p-5 overflow-y-auto space-y-3 text-[15px] leading-relaxed
-            scrollbar-thin scrollbar-thumb-[#36ffc6]/50 scrollbar-track-transparent"
-                                ref={(el) => {
-                                    if (el) {
-                                        el.scrollTop = el.scrollHeight;
-                                    }
-                                }}
-                                id="chat-scroll-container"
-                            >
-                                {messages.map((msg, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}
-                                    >
-                                        <div
-                                            className={`px-4 py-3 rounded-xl shadow-sm whitespace-pre-line max-w-[80%]
-                  ${msg.from === "user"
-                                                    ? "bg-[#36ffc6]/90 text-[#004d3f]"
-                                                    : "bg-[#f5fffd] text-[#004d3f] border border-[#c5fff0]"
-                                                }`}
-                                        >
-                                            {msg.text}
-                                        </div>
-                                    </div>
-                                ))}
-                                <div id="scroll-anchor" />
-                            </div>
-
-                            <div className="border-t border-gray-200 p-4 flex flex-wrap gap-2 justify-start bg-[#f0fff9]">
-                                {FAQ_LIST.slice(0, 5).map((faq, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => {
-                                            setMessages((prev) => [...prev, { from: "user", text: faq.keywords[0] }]);
-                                            setTimeout(() => {
-                                                setMessages((prev) => [...prev, { from: "bot", text: faq.answer }]);
-                                                const el = document.getElementById("chat-scroll-container");
-                                                if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
-                                            }, 400);
-                                        }}
-                                        className="px-3 py-1.5 rounded-full border border-[#36ffc6]/40 bg-white hover:bg-[#36ffc6]/10
-                text-[#007a65] text-xs font-medium transition flex items-center"
-                                    >
-                                        <HelpCircle size={12} className="mr-1 text-[#00d8b8]" />
-                                        {faq.keywords[0]}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <div className="border-t border-gray-200 bg-white p-3 flex items-center gap-3">
-                                <input
-                                    type="text"
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onKeyDown={handleKeyPress}
-                                    placeholder="문의 내용을 입력하세요..."
-                                    className="flex-1 px-4 py-2.5 text-sm border border-[#a6f2df] rounded-lg
-              focus:ring-1 focus:ring-[#36ffc6]/70"
-                                />
-                                <button
-                                    onClick={() => {
-                                        handleSend();
-                                        setTimeout(() => {
-                                            const el = document.getElementById("chat-scroll-container");
-                                            if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
-                                        }, 150);
-                                    }}
-                                    className="p-3 rounded-full bg-[#36ffc6] hover:bg-[#00d8b8] text-white transition"
-                                >
-                                    <SendHorizonal size={20} />
-                                </button>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
         </>
     );
 }
