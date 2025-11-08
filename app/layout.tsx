@@ -122,7 +122,7 @@ export default function RootLayout({
         "
       >
         {/* 🌈 오로라 백그라운드 */}
-        <AuroraBackground />
+
 
         {/* 🧭 전역 네비게이션 */}
         <Navbar />
