@@ -77,10 +77,10 @@ export default function Partners(): JSX.Element {
     return (
         <section
             id="partners"
-            className="relative py-24 px-6 md:px-16 bg-gradient-to-b from-[#e8fff6] via-[#f2fffb] to-[#ffffff] overflow-hidden"
+            className="relative py-24 px-6 md:px-16  overflow-hidden"
         >
             {/* 💫 배경 효과 */}
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_60%_40%,rgba(0,200,155,0.08),transparent_70%)]" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_60%_40%,rgba(0,200,155,0.08),transparent_10%)]" />
 
             {/* 헤더 */}
             <motion.div {...fadeUp(0)} className="max-w-3xl mx-auto text-center mb-16">
@@ -184,14 +184,14 @@ export default function Partners(): JSX.Element {
             <motion.div
                 {...fadeUp(2)}
                 className="max-w-5xl mx-auto mt-20 rounded-2xl border border-[rgba(0,200,155,0.25)]
-                   bg-gradient-to-r from-[#e8fff6] to-[#f2fffb] p-8 md:p-10 text-center
+                    p-8 md:p-10 text-center
                    shadow-[0_8px_30px_rgba(0,200,155,0.08)]"
             >
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(0,200,155,0.1)] text-[#00b894] text-sm mb-4">
                     <Handshake size={14} /> PARTNERSHIP PROGRAM
                 </div>
                 <h3 className="text-xl md:text-2xl font-semibold text-[#0f172a] mb-3">
-                    SFIN PAY와 함께 성장할
+                    SFIN PAY와 함께 성장할{" "}
                     <br className="block md:hidden" />
                     파트너를 찾습니다
                 </h3>

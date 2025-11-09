@@ -62,18 +62,18 @@ export default function Hero(): JSX.Element {
             ref={ref}
             style={{ opacity, y } as any}
             className="relative flex flex-col lg:flex-row items-center justify-between
-                 min-h-[100vh] overflow-hidden
-                 bg-gradient-to-br from-[#CFFBF6] via-[#A3FFE8] to-white"
+                 min-h-[100vh] overflow-hidden"
+        /*bg-gradient-to-br from-[#CFFBF6] via-[#A3FFE8] to-white"*/
         >
             {/* 배경 효과 */}
             <div
                 className="absolute inset-0 -z-[5]
-                   bg-[radial-gradient(ellipse_at_70%_20%,rgba(63,255,222,0.08),transparent_60%),radial-gradient(ellipse_at_20%_80%,rgba(50,245,210,0.08),transparent_60%)]"
+                   bg-[radial-gradient(ellipse_at_70%_20%,rgba(63,255,222,0.08),transparent_10%),radial-gradient(ellipse_at_20%_80%,rgba(50,245,210,0.08),transparent_10%)]"
             />
 
             {/* 좌측 텍스트 영역 */}
             <div className="z-10 w-full lg:w-1/2 px-10 md:px-16 lg:px-24 py-24 lg:py-0 text-center lg:text-left">
-                <motion.h1
+                <motion.p
                     initial={{ opacity: 1, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -85,7 +85,7 @@ export default function Hero(): JSX.Element {
                     </span>
 
                     {/* 메인 타이틀 */}
-                    <span
+                    <h1
                         className="block
                        text-transparent bg-clip-text
                        bg-gradient-to-r from-[#00B894] via-[#00997A] to-[#006F4F]"
@@ -93,8 +93,8 @@ export default function Hero(): JSX.Element {
                         비즈니스를 성장시키는
                         <br />
                         통합 결제 플랫폼
-                    </span>
-                </motion.h1>
+                    </h1>
+                </motion.p>
 
                 {/* 본문 설명 */}
                 <motion.p

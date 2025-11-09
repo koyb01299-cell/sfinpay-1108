@@ -20,6 +20,12 @@ body {
   overflow-wrap: break-word;
 }
 
+body p h1 {
+  letter-spacing: 0.05rem;
+  line-height: 1.2;
+  /*word-break: keep-all;*/
+}
+
 body h1 span {
   letter-spacing: 0.05rem;
   line-height: 1.2;

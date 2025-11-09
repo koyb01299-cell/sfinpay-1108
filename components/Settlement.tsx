@@ -1,5 +1,5 @@
 ﻿'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
     CreditCard,
@@ -11,55 +11,120 @@ import {
 
 export default function Settlement(): JSX.Element {
     const [step, setStep] = useState(0);
-    const [amount, setAmount] = useState(0);
-    const [gross, setGross] = useState(0); // 수수료 전 금액
-    const [net, setNet] = useState(0); // 수수료 차감 후 금액
-    const [feeRate, setFeeRate] = useState(0); // ✅ 수수료율 (%)
+    const [gross, setGross] = useState(0);
+    const [net, setNet] = useState(0);
+    const [feeRate, setFeeRate] = useState(0);
 
-    // 💫 단계 순환 (4초마다)
+    const amountRef = useRef<HTMLSpanElement | null>(null);
+    const animationFrameRef = useRef<number | null>(null);
+
+    // 단계 순환 (4초마다)
     useEffect(() => {
-        const loop = () => setStep((s) => (s + 1) % 3);
+        const loop = () => {
+            setStep((prev) => (prev + 1) % 3);
+        };
         const interval = setInterval(loop, 4000);
         return () => clearInterval(interval);
     }, []);
 
-    // 💸 금액 및 수수료 반영
-    useEffect(() => {
-        let newGross = gross;
+    // 공통 애니메이션 유틸 (requestAnimationFrame + 직접 DOM 업데이트)
+    const animateAmount = (
+        from: number,
+        to: number,
+        {
+            duration = 1000,
+            easing = 'outCubic', // 'linear' | 'outCubic' | 'outBack'
+        }: { duration?: number; easing?: 'linear' | 'outCubic' | 'outBack' } = {}
+    ) => {
+        if (!amountRef.current) return;
 
-        if (step === 0) {
-            // ① 매출 금액 생성
-            const min = 80000;
-            const max = 120000;
-            newGross = Math.floor(Math.random() * ((max - min) / 10 + 1)) * 10 + min;
-            setGross(newGross);
-
-            // ② 수수료율 무작위 (0.8% ~ 2.5%)
-            const randomRate = (Math.random() * (2.5 - 0.8) + 0.8);
-            const rateRounded = Math.round(randomRate * 100) / 100; // 소수점 둘째 자리
-            setFeeRate(rateRounded);
-
-            // ③ 수수료 차감 후 입금액 계산
-            const newNet = Math.floor((newGross * (1 - rateRounded / 100)) / 10) * 10;
-            setNet(newNet);
+        if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
         }
 
-        // ④ 애니메이션 처리
-        const start = 0;
-        const end = step === 2 ? net : newGross;
-        const duration = 1500;
         const startTime = performance.now();
 
-        let frame: number;
-        const animate = (time: number) => {
-            const progress = Math.min((time - startTime) / duration, 1);
-            const value = start + (end - start) * progress;
-            setAmount(Math.floor(value / 10) * 10);
-            if (progress < 1) frame = requestAnimationFrame(animate);
+        const ease = (t: number) => {
+            if (easing === 'linear') return t;
+            if (easing === 'outCubic') return 1 - Math.pow(1 - t, 3);
+            if (easing === 'outBack') {
+                const c1 = 1.70158;
+                const c3 = c1 + 1;
+                return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+            }
+            return t;
         };
 
-        frame = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(frame);
+        const tick = (now: number) => {
+            if (!amountRef.current) return;
+
+            const rawProgress = (now - startTime) / duration;
+            const clamped = Math.min(Math.max(rawProgress, 0), 1);
+            const eased = ease(clamped);
+
+            const current = from + (to - from) * eased;
+            const snapped = Math.floor(current / 10) * 10; // 10원 단위 스냅
+
+            amountRef.current.textContent = `₩${snapped.toLocaleString()}`;
+
+            if (clamped < 1) {
+                animationFrameRef.current = requestAnimationFrame(tick);
+            } else {
+                animationFrameRef.current = null;
+            }
+        };
+
+        animationFrameRef.current = requestAnimationFrame(tick);
+    };
+
+    // Step 변화에 따른 금액/애니메이션 제어
+    useEffect(() => {
+        // 0단계: 새로운 거래 발생 → gross/net/fee 재계산 + 0 → gross 카운트업
+        if (step === 0) {
+            const min = 80000;
+            const max = 120000;
+            const newGross =
+                Math.floor(Math.random() * ((max - min) / 10 + 1)) * 10 + min;
+
+            const randomRate = Math.random() * (2.5 - 0.8) + 0.8;
+            const rateRounded = Math.round(randomRate * 100) / 100;
+
+            const newNet =
+                Math.floor((newGross * (1 - rateRounded / 100)) / 10) * 10;
+
+            setGross(newGross);
+            setNet(newNet);
+            setFeeRate(rateRounded);
+
+            // 극적인 시작: 0 → gross 빠르게 치솟는 애니메이션
+            animateAmount(0, newGross, {
+                duration: 900,
+                easing: 'outCubic',
+            });
+        }
+
+        // 1단계: 정산 검증 - 숫자 고정 (애니메이션 없음, 안정감)
+        if (step === 1) {
+            if (amountRef.current && gross) {
+                amountRef.current.textContent = `₩${gross.toLocaleString()}`;
+            }
+        }
+
+        // 2단계: 입금 완료 - gross → net 으로 "툭 떨어지는" 연출
+        if (step === 2 && gross && net) {
+            // 살짝 튕겼다가(net에 안착) 하는 느낌
+            animateAmount(gross, net, {
+                duration: 900,
+                easing: 'outBack',
+            });
+        }
+
+        return () => {
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+            }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [step]);
 
     const stages = [
@@ -72,7 +137,7 @@ export default function Settlement(): JSX.Element {
         {
             title: '정산 검증',
             desc: 'AI 정산 엔진이 거래 내역을 분석하고 리스크를 자동 감지합니다.',
-            sub: '⚙️ 이상 거래 0건, 검증 완료 예정',
+            sub: '⚙️ 이상 거래 0건, 검증 진행 중',
             icon: <Clock3 size={24} />,
         },
         {
@@ -90,7 +155,9 @@ export default function Settlement(): JSX.Element {
         >
             {/* 💫 민트 배경 */}
             <motion.div
-                animate={{ backgroundPosition: ['0% 0%', '100% 50%', '0% 100%', '0% 0%'] }}
+                animate={{
+                    backgroundPosition: ['0% 0%', '100% 40%', '0% 80%', '0% 0%'],
+                }}
                 transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-0 -z-10 opacity-60"
                 style={{
@@ -113,86 +180,108 @@ export default function Settlement(): JSX.Element {
                     <Wallet size={16} /> 실시간 자동 정산
                 </span>
                 <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-[#0C3C35] leading-tight">
-                    결제 후{" "}
+                    결제 후{' '}
                     <span className="text-[#00c8b4]">
-                        입금까지{" "}
-                        <br className="block md:hidden" />
+                        입금까지 <br className="block md:hidden" />
                         단 15분
                     </span>
                 </h2>
                 <p className="mt-5 text-[#2E5C54]/80 text-lg leading-relaxed">
-                    결제 승인 → 검증 → 입금 <br /> 모든 과정이 자동으로 연결됩니다.
+                    결제 승인 → 검증 → 입금
+                    <br />
+                    모든 과정이 자동으로 연결됩니다.
                 </p>
             </motion.div>
 
             {/* 단계 카드 */}
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-10">
-                {stages.map((s, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 1, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.2 }}
-                        className={`relative flex-1 p-6 rounded-2xl border  duration-500 backdrop-blur-sm ${i === step
-                            ? 'border-[#00c8b4]/50 bg-white shadow-[0_8px_30px_rgba(0,200,155,0.18)]'
-                            : 'border-[#C4F7EC] bg-[#F8FFFD] min-h-[220px]'
-                            }`}
-                    >
-                        {i === step && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.05, 1] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                                className="absolute inset-0 -z-10 rounded-2xl bg-[#00c8b4]/30 blur-2xl"
-                            />
-                        )}
+                {stages.map((s, i) => {
+                    const isActive = i === step;
+                    return (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 1, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.15 }}
+                            className={`relative flex-1 p-6 rounded-2xl border backdrop-blur-sm duration-500 ${isActive
+                                    ? 'border-[#00c8b4]/60 bg-white shadow-[0_10px_36px_rgba(0,200,155,0.18)] scale-[1.02]'
+                                    : 'border-[#C4F7EC] bg-[#F8FFFD] min-h-[220px] opacity-80'
+                                }`}
+                        >
+                            {isActive && (
+                                <motion.div
+                                    initial={{ opacity: 0.12, scale: 0.96 }}
+                                    animate={{ opacity: [0.15, 0.3, 0.15], scale: [0.98, 1.04, 0.98] }}
+                                    transition={{
+                                        duration: 2.5,
+                                        repeat: Infinity,
+                                        ease: 'easeInOut',
+                                    }}
+                                    className="absolute inset-0 -z-10 rounded-2xl bg-[#00c8b4]/26 blur-2xl"
+                                />
+                            )}
 
-                        <div className={`flex items-center gap-3 ${i === step ? 'text-[#00c8b4]' : 'text-[#2E5C54]/60'}`}>
-                            <div className={`p-3 rounded-xl ${i === step ? 'bg-[#00c8b4]/10' : 'bg-[#C4F7EC]/30'}`}>
-                                {s.icon}
-                            </div>
-                            <h3 className="font-semibold text-lg">{s.title}</h3>
-                        </div>
-
-                        <p className="mt-3 text-[#2E5C54]/80 text-sm leading-relaxed">{s.desc}</p>
-
-                        {/* ✅ 3단계에만 수수료 안내 */}
-                        {i === 2 && (
-                            <p className="mt-2 text-[#00a884] text-xs font-semibold">
-                                ※ PG 수수료 {feeRate.toFixed(2)}% 차감 후 입금됩니다.
-                            </p>
-                        )}
-
-                        {i === step && (
-                            <motion.div
-                                initial={{ opacity: 1 }}
-                                animate={{ opacity: 1 }}
-                                className="mt-4 text-xs text-[#00c8b4] font-semibold tracking-wide"
+                            <div
+                                className={`flex items-center gap-3 ${isActive ? 'text-[#00c8b4]' : 'text-[#2E5C54]/60'
+                                    }`}
                             >
-                                {s.sub}
-                            </motion.div>
-                        )}
-
-                        {i < stages.length - 1 && (
-                            <div className="hidden md:block absolute right-[-20px] top-[50%] translate-y-[-50%]">
-                                <ArrowRight size={20} className={`${i === step ? 'text-[#00c8b4]' : 'text-[#A7ECDD]'}`} />
+                                <div
+                                    className={`p-3 rounded-xl ${isActive ? 'bg-[#00c8b4]/10' : 'bg-[#C4F7EC]/30'
+                                        }`}
+                                >
+                                    {s.icon}
+                                </div>
+                                <h3 className="font-semibold text-lg">{s.title}</h3>
                             </div>
-                        )}
-                    </motion.div>
-                ))}
+
+                            <p className="mt-3 text-[#2E5C54]/80 text-sm leading-relaxed">
+                                {s.desc}
+                            </p>
+
+                            {i === 2 && (
+                                <p className="mt-2 text-[#00a884] text-xs font-semibold">
+                                    ※ PG 수수료 {feeRate.toFixed(2)}% 차감 후 입금됩니다.
+                                </p>
+                            )}
+
+                            {isActive && (
+                                <motion.div
+                                    initial={{ opacity: 1, y: 4 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mt-4 text-xs text-[#00c8b4] font-semibold tracking-wide"
+                                >
+                                    {s.sub}
+                                </motion.div>
+                            )}
+
+                            {i < stages.length - 1 && (
+                                <div className="hidden md:block absolute right-[-20px] top-1/2 -translate-y-1/2">
+                                    <ArrowRight
+                                        size={20}
+                                        className={
+                                            isActive ? 'text-[#00c8b4]' : 'text-[#A7ECDD]'
+                                        }
+                                    />
+                                </div>
+                            )}
+                        </motion.div>
+                    );
+                })}
             </div>
 
-            {/* 💰 금액 카운트업 */}
+            {/* 💰 금액 카운트업 (극적인 연출 + 성능 개선) */}
             <div className="mt-16 text-center">
                 <motion.div
-                    key={amount}
-                    initial={{ opacity: 1, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-[#00c8b4] via-[#00d0aa] to-[#00a884] bg-clip-text text-transparent drop-shadow-sm"
+                    animate={
+                        step === 2
+                            ? { scale: [1, 1.05, 1], filter: ['brightness(1)', 'brightness(1.15)', 'brightness(1)'] }
+                            : { scale: 1, filter: 'brightness(1)' }
+                    }
+                    transition={{ duration: 0.8 }}
+                    className="inline-block text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-[#00c8b4] via-[#00d0aa] to-[#00a884] bg-clip-text text-transparent drop-shadow-sm"
                 >
-                    ₩{amount.toLocaleString()}
+                    <span ref={amountRef}>₩0</span>
                 </motion.div>
                 <p className="mt-3 text-[#2E5C54]/70 text-base">
                     {['결제 승인 중', '정산 검증 중', '입금 완료'][step]}
@@ -212,12 +301,9 @@ export default function Settlement(): JSX.Element {
                     <br />
                     현금 흐름을 끊김 없이 이어드립니다.
                 </p>
-                {/*
-                원본 bg-gradient-to-r from-[#00c8b4] to-[#00d0aa] hover:from-[#00a884] hover:to-[#00b894]
-                */}
                 <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00c89b] to-[#00b894] hover:from-[#00b894] hover:to-[#00a884] text-white font-semibold shadow-[0_8px_20px_rgba(0,184,148,0.25)] "
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00c89b] to-[#00b894] hover:from-[#00b894] hover:to-[#00a884] text-white font-semibold shadow-[0_8px_20px_rgba(0,184,148,0.25)]"
                 >
                     빠른 정산 문의하기 <ArrowRight size={16} />
                 </a>
